@@ -1,6 +1,16 @@
 <?php
-$user = 'tonito';
-$status = 'inactive';
+session_start();
+if ((isset($_SESSION['username']) != '')) 
+{
+include("connection.php");
+$firstname = $db->query("SELECT first FROM users WHERE username='$_SESSION[username]'");
+while ($firstrow = $firstname->fetch_assoc()){
+$first = $firstrow['first'];
+}
+}
+else{
+	$first = '';
+}
 echo "
 <html>
 <head>
@@ -27,10 +37,29 @@ aikito
 </head>
 <body>
 ";
-if ($user === 'null') {
-	echo "<h1>Welcome to Thrift</h1>
-		<a href= '/registration.php'>Register</a> <a href= '/login.php'>Log In</a>
-	";
+if ((isset($_SESSION['username']) == '')) 
+{
+	echo "
+	<nav class='navbar navbar-default'>
+  		<div class='container'>
+    		<div class='navbar-header'>
+      			<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>
+        				<span class='icon-bar'></span>
+        				<span class='icon-bar'></span>
+        				<span class='icon-bar'></span>                        
+      			</button>
+      			<a class='navbar-brand' href='#'>Home</a>
+    		</div>
+    		<div class='collapse navbar-collapse' id='myNavbar'>
+      			<ul class='nav navbar-nav navbar-right'>
+					<li><a href= '/registration.php'>Register</a></li> 
+					<li><a href= '/index.php'>Log In</a></li>
+					
+									</ul>
+			</div>
+		</div>
+	</nav>
+";
 }
 else
 {
@@ -47,8 +76,9 @@ else
     		</div>
     		<div class='collapse navbar-collapse' id='myNavbar'>
       			<ul class='nav navbar-nav navbar-right'>
-					<li><a href= '/user.php'>Profile</a></li> 
-					<li><a href= '/Settings.php'>Settings</a></li>
+					<li><a href= '/user.php'>$first</a></li> 
+					<li><a href= '/settings.php'>Settings</a></li>
+					<li><a href= '/logout.php'>Log Out</a></li>
 				</ul>
 			</div>
 		</div>
@@ -58,7 +88,7 @@ else
 echo "
 	
 	<div class='container'>
-	<div class='bg1 center'><h1>aikito</h1></div>
+	<div class='bg1 center'><h1>Welcome to aikito</h1></div>
 	</div>
 	<div class='container'>
   <form>

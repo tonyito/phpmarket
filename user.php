@@ -7,9 +7,9 @@ if ($connuser->connect_error) {
     die("Connection failed: " . $connuser->connect_error);
 }
 // Select username
-$selected_user = $connuser->query("SELECT * FROM users WHERE name='tonito'");
+$selected_user = $connuser->query("SELECT * FROM users WHERE username='tonito'");
 while ($userrow = $selected_user->fetch_assoc()){
-$user= $userrow['name'];
+$user= $userrow['first'];
 }
 $userstatic = $user;
 //start html
@@ -39,7 +39,7 @@ else {
 
 $average_rating = $connrating->query("SELECT AVG(rating) AS average_rate FROM rating WHERE for_user='$user'");
   while ($averagerow = $average_rating->fetch_assoc()){
-      if ($averagerow['average_rate'] > 0) {
+      if ($averagerow['average_rate'] >= 0) {
         echo "<h2>This user's average rating is: $averagerow[average_rate]</h2>";
       }
       else {
@@ -54,7 +54,7 @@ if ($connads->connect_error) {
     die("Connection failed: " . $connads->connect_error);
 }
 $selected_ad = $connads->query("SELECT * FROM ads WHERE user='$user'");
-if ($selected_ad->num_rows > 0){
+if ($selected_ad->num_rows >= 0){
 while ($adrow = $selected_ad->fetch_assoc()){
   echo "<a href='#'>$adrow[title]: \$$adrow[price]</a>";
 }
