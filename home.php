@@ -10,18 +10,18 @@ $first = $firstrow['first'];
 }
 else{
 	$first = '';
-}
-echo "
+} 
+?>
 <html>
 <head>
 <title>
 aikito
 </title>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
   .center {
   	text-align: center;
@@ -36,10 +36,9 @@ aikito
   </style>
 </head>
 <body>
-";
+<?php
 if ((isset($_SESSION['username']) == '')) 
-{
-	echo "
+{ ?>
 	<nav class='navbar navbar-default'>
   		<div class='container'>
     		<div class='navbar-header'>
@@ -53,17 +52,16 @@ if ((isset($_SESSION['username']) == ''))
     		<div class='collapse navbar-collapse' id='myNavbar'>
       			<ul class='nav navbar-nav navbar-right'>
 					<li><a href= '/registration.php'>Register</a></li> 
-					<li><a href= '/index.php'>Log In</a></li>
+					<li><a href= '/logindex.php'>Log In</a></li>
 					
 									</ul>
 			</div>
 		</div>
 	</nav>
-";
+<?php
 }
 else
-{
-	echo "
+{?>
 	<nav class='navbar navbar-default'>
   		<div class='container'>
     		<div class='navbar-header'>
@@ -83,10 +81,7 @@ else
 			</div>
 		</div>
 	</nav>
-";
-} 
-echo "
-	
+<?php } ?>
 	<div class='container'>
 	<div class='bg1 center'><h1>Welcome to aikito</h1></div>
 	</div>
@@ -100,10 +95,6 @@ echo "
     </div>
   </form>
 	</div>
-	";
-echo "
+
 	</body>
 	</html>
-	";
-
-?>

@@ -29,14 +29,14 @@ $resultu = mysqli_query($db,$sqlu);
 $rowu = mysqli_fetch_array($resultu,MYSQLI_ASSOC);
 if(mysqli_num_rows($result) == 1)
 {
-	echo "Sorry...This email already exists...";
+	echo "<p>This email address already exists on our server. Click <a href=/registration.php>here</a> to go back to the registration page and try again.<p>";
 }
 elseif (mysqli_num_rows($resultu) == 1) {
-	echo "This username already exists";
+	echo "<p>This username already exists on our server. Click <a href=/registration.php>here</a> to go back to the registration page and try again.<p>";
 }
 else
 {
-	$query = mysqli_query($db, "INSERT INTO users (first, last, email, username, password)VALUES ('$first', '$last', '$email', '$username', '$password')");
+	$query = mysqli_query($db, "INSERT INTO users (first, last, email, username, password, status)VALUES ('$first', '$last', '$email', '$username', '$password', 'active')");
  
 if($query)
 {

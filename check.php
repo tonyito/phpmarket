@@ -11,6 +11,6 @@ $login_user=$row['username'];
 
 if(!isset($user_check))
 {
-header("Location: index.php");
+header("Location: logindex.php");
 }
 ?>
