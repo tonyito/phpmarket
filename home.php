@@ -36,6 +36,7 @@ aikito
   </style>
 </head>
 <body>
+
 <?php
 if ((isset($_SESSION['username']) == '')) 
 { ?>
