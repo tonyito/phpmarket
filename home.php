@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ((isset($_SESSION['username']) != '')) 
+if ((isset($_SESSION['username']) != ''))
 {
 include("connection.php");
 $firstname = $db->query("SELECT first FROM users WHERE username='$_SESSION[username]'");
@@ -10,7 +10,7 @@ $first = $firstrow['first'];
 }
 else{
 	$first = '';
-} 
+}
 ?>
 <html>
 <head>
@@ -31,14 +31,14 @@ aikito
   }
   .bg1 {
   	padding-top: 70px;
-  	padding-bottom: 70px;
+  	padding-bottom: 40px;
   }
   </style>
 </head>
 <body>
 
 <?php
-if ((isset($_SESSION['username']) == '')) 
+if ((isset($_SESSION['username']) == ''))
 { ?>
 	<nav class='navbar navbar-default'>
   		<div class='container'>
@@ -46,15 +46,15 @@ if ((isset($_SESSION['username']) == ''))
       			<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>
         				<span class='icon-bar'></span>
         				<span class='icon-bar'></span>
-        				<span class='icon-bar'></span>                        
+        				<span class='icon-bar'></span>
       			</button>
       			<a class='navbar-brand' href='#'>Home</a>
     		</div>
     		<div class='collapse navbar-collapse' id='myNavbar'>
       			<ul class='nav navbar-nav navbar-right'>
-					<li><a href= '/registration.php'>Register</a></li> 
+					<li><a href= '/registration.php'>Register</a></li>
 					<li><a href= '/logindex.php'>Log In</a></li>
-					
+
 									</ul>
 			</div>
 		</div>
@@ -69,13 +69,13 @@ else
       			<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>
         				<span class='icon-bar'></span>
         				<span class='icon-bar'></span>
-        				<span class='icon-bar'></span>                        
+        				<span class='icon-bar'></span>
       			</button>
       			<a class='navbar-brand' href='#'>Home</a>
     		</div>
     		<div class='collapse navbar-collapse' id='myNavbar'>
       			<ul class='nav navbar-nav navbar-right'>
-					<li><a href= '/user.php'>$first</a></li> 
+					<li><a href= '/user.php'>$first</a></li>
 					<li><a href= '/settings.php'>Settings</a></li>
 					<li><a href= '/logout.php'>Log Out</a></li>
 				</ul>
@@ -84,12 +84,12 @@ else
 	</nav>
 <?php } ?>
 	<div class='container'>
-	<div class='bg1 center'><h1>Welcome to aikito</h1></div>
+	<div class='bg1 center'><img src='aikito.png'></div>
 	</div>
 	<div class='container'>
   <form>
     <div class='input-group input-group-sm'>
-      <input type='text' class='form-control' placeholder='Search'>
+      <input type='text' class='form-control' placeholder='Find What You&#39;re Looking For:'>
       <div class='input-group-btn'>
         <button class='btn btn-default' type='submit'><i class='glyphicon glyphicon-search'></i></button>
       </div>
